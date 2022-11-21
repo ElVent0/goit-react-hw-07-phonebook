@@ -2,14 +2,14 @@ import css from './Phonebook.module.css';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/phonebookSlice';
+import { addContact } from '../../redux/operations';
 
 const Phonebook = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(store => store.phonebook.contacts);
+  const contacts = useSelector(store => store.phonebook.contacts.items);
 
   const handleChangeForm = e => {
     if (e.target.name === 'name') {
