@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/operations';
+import { selectContacts } from '../../redux/selectors';
 
 const Phonebook = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(store => store.phonebook.contacts.items);
+  const contacts = useSelector(selectContacts);
 
   const handleChangeForm = e => {
     if (e.target.name === 'name') {

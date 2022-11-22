@@ -8,8 +8,12 @@ export const selectError = state => state.phonebook.contacts.error;
 export const selectActiveContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
-    return contacts.filter(item =>
-      item.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    if (filter === '') {
+      return contacts;
+    } else if (filter !== '') {
+      return contacts.filter(item =>
+        item.name.toLowerCase().includes(filter.toLowerCase())
+      );
+    }
   }
 );
